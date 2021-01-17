@@ -3,7 +3,7 @@ class input_object:
         import pygame as pg
         self.keydict = {}
         for this in ['mx', 'my', 'm1', 'm2', 'm3', 't1', 't2', 't3', 't1_v', 't2_v', 't3_v']:
-            exec('self.' + this + ' = 0')
+            exec('self.' + this + ' = 69')
         self.mouse_over_list = []
         self.mouse_over = None
         for this in jsondata.keys:
@@ -48,6 +48,8 @@ class input_object:
                     self.keydict.update({jsondata.keys[str(this.key)]: 0})
             if this.type == pg.VIDEORESIZE:
                 if not self.screenlist[1] == pg.FULLSCREEN: screen = pg.display.set_mode((this.w, this.h), pg.RESIZABLE)
+                self.window_w = this.w
+                self.window_h = this.h
         if self.F11_t:
             if self.screenlist[1] == pg.FULLSCREEN: self.screenlist = [(900, 600), pg.RESIZABLE]
             elif self.screenlist[1] == pg.RESIZABLE: self.screenlist = [(1920, 1080), pg.FULLSCREEN]

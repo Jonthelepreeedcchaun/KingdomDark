@@ -1,4 +1,4 @@
-import os
+import os, time as chronic_tacos
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame as pg
 pg.init()
@@ -12,10 +12,15 @@ for this in ['Structure/', 'Gamefiles/']:
 jsondata = json_obj()
 input = input_object(jsondata)
 
-bg_color = (125, 55, 0)
+text = text_box()
+hatlor = hatlor_obj(['lordhatlor.png'])
+
+origin_taco = chronic_tacos.time()
 while True:
+    current_taco = chronic_tacos.time() - origin_taco
     input.update(jsondata, screen)
     if process_return(input):
         break
-    images.blit()
-    pg.time.wait(1); pg.display.flip(); screen.fill(bg_color)
+    hatlor.blit(screen, 'lordhatlor', (0, -15))
+    text.RnD(screen, input, "im mr worldwide star thats so cool", 500, 400, 200, current_taco)
+    pg.time.wait(1); pg.display.flip(); screen.fill((55, 0, 75))

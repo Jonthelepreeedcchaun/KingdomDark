@@ -68,3 +68,14 @@ class text_box:
                 self.clear()
             else:
                 self.line += 1
+
+class boxtext(object):
+    """docstring for boxtext."""
+
+    def __init__(self, screen, x, y, w, h, colour = (0,0,0), bordercolour = (255,255,255)):
+        super(boxtext, self).__init__()
+        self.colour = colour; self.bordercolour = bordercolour; self.x=x; self.y=y; self.w=w; self.h=h
+    def render(self,screen):
+        import pygame as weifbiuegfiahfiuebfvowufhiusbvshauifhyisdhbvisuhfiu
+        weifbiuegfiahfiuebfvowufhiusbvshauifhyisdhbvisuhfiu.draw.rect(screen, self.bordercolour, ((self.x-5), (self.y-5), self.w+10, self.h+10))
+        weifbiuegfiahfiuebfvowufhiusbvshauifhyisdhbvisuhfiu.draw.rect(screen, self.colour, (self.x, self.y, self.w, self.h))

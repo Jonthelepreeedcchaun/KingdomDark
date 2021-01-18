@@ -15,6 +15,3 @@ def dl_content(url):
     headers = requests.utils.default_headers()
     x = requests.get(url, headers=headers)
     return x.text
-
- #if __name__ == "__main__":
-#     dl_file('https://github.com/Anonymous-crow/lmao/archive/master.zip', 'lmao.zip', '..\\Ass')

@@ -6,17 +6,22 @@ def message_display(screen, text, x, y, size, color):
     import pygame as pg
     largeText = pg.font.Font(None, size)
     TextSurf, TextRect = text_objects(text, largeText, color)
-    TextRect.center = (x, y)
+    TextRect.topleft = (x, y)
     screen.blit(TextSurf, TextRect)
     dimension = largeText.render(text, True, color).get_rect()
     return(TextRect)
 
 class text_box:
     def __init__(self):
-        self.clear()
+        from Gamefiles.ass_processing import ass; import os
+        self.ass_dict = {}
+        for this in os.listdir('Ass/Textbox'):
+            if this[-5:] == "3.png":
+    def box(self, screen, input, text_dict, x, y, x_len, time, speed = 1, size = 40, color = (255, 255, 255)):
+        pass
     def clear(self):
         self.linedict = None
-    def RnD(self, screen, input, text, x, y, x_len, time, speed = 1, size = 40, color = (255, 255, 255)):
+    def RnD(self, screen, input, text, x, y, x_len, time, speed, size, color):
         if self.linedict == None:
             self.render(screen, text, x, y, x_len, size, color)
             self.timestart = time; self.timelist = []; self.line = 0; self.word = "arbitrary string :)"

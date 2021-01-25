@@ -3,17 +3,18 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame as pg
 pg.init()
 screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
-
+resize = pg.display.set_mode((1280, 720))
 pg.display.set_caption('KingdomDark'); pg.mouse.set_visible(False)
 
 for this in ['Structure/', 'Gamefiles/']:
     for that in os.listdir(this):
         if that[-3:] == '.py': exec('from ' + this[:-1] + '.' + that[:-3] + ' import *')
 
-def magic(screen, oxygen, inpt, origin_taco):
+def magic(screen, window, oxygen, inpt, origin_taco):
     import time as chronic_tacos, pygame as pg
+    resize.blit(pg.transform.scale(resize, (screen.get_rect().w, screen.get_rect().h)), (0, 0))
     pg.display.update((0, 0, 1920, 1080))
-    pg.time.wait(1); screen.fill((60, 20, 70))
+    pg.time.wait(1); resize.fill((60, 20, 70))
     oxygen.rect_list = []
     return(chronic_tacos.time() - origin_taco)
 
@@ -55,40 +56,36 @@ menu = ass(['menu.png'])
 mode = "main_menu"
 origin_taco = chronic_tacos.time(); ticksync.tick = 1
 while True:
-    inpt.update(jsondata, screen)
+    inpt.update(jsondata, resize)
     oxygen.breathe(inpt)
-    mouse.curse(screen, inpt, ticksync.tick); mouse.rect_intake(screen, inpt)
+    mouse.curse(screen, inpt, ticksync.tick); mouse.rect_intake(resize, inpt)
     inpt.mouse = mouse
-    current_taco = magic(screen, oxygen, inpt, origin_taco)
+    current_taco = magic(resize, window, oxygen, inpt, origin_taco)
     if process_return(inpt):
         break
     ticksync.update(current_taco)
     if mode == "main_menu":
-        menu.blit(screen, "menu", (0, 0))
+        menu.blit(resize, "menu", (0, 0))
         if inpt.t1:
             mode = "game_loop"
             time = "dawn"
     if mode == "game_loop":
         if time == "dawn":
-            #window.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
-            click_box = curtain.waiting(screen, oxygen, inpt, 'wait', (587, 122), ticksync.tick, 1.5)
+            window.pose(resize, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
+            click_box = curtain.waiting(resize, oxygen, inpt, 'wait', (2*587/3, 2*122/3), ticksync.tick, 1.5)
             if click_box.collidepoint(inpt.mx, inpt.my): mouse.rect_list.append('curtain')
-            #floor.pose(screen, oxygen, 'be', (-100, 20), ticksync.tick)
-            #hatlor.pose(screen, oxygen, 'sit', (10, 300), ticksync.tick)
-            throneroom.pose(screen, oxygen, 'be', (0, 20), ticksync.tick)
+            throneroom.pose(resize, oxygen, 'be', (0, 20), ticksync.tick)
             if mouse.rect_over == 'curtain' and inpt.t1:
                 time = 'day'
         if time == "day":
-            #window.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
-            opencurtain.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
-            #floor.pose(screen, oxygen, 'be', (-100, 20), ticksync.tick)
-            #hatlor.pose(screen, oxygen, 'sit', (10, 300), ticksync.tick)
-            throneroom.pose(screen, oxygen, 'be', (0, 20), ticksync.tick)
+            window.pose(resize, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
+            opencurtain.pose(resize, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
+            throneroom.pose(resize, oxygen, 'be', (0, 20), ticksync.tick)
             character_dict = {advisor: 1, jester: 2}
-            if event.go(screen, oxygen, inpt, current_taco, ticksync.tick, jsondata, text, character_dict):
+            if event.go(resize, oxygen, inpt, current_taco, ticksync.tick, jsondata, text, character_dict):
                 time = 'dusk'
     if mode == "write":
-        inpt.screenlist = [(1, 1), pg.RESIZABLE]
+        inpt.resizelist = [(1, 1), pg.RESIZABLE]
         if not hasattr(inpt, 'count'):
             inpt.count = 0
         else:

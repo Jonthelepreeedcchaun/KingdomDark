@@ -33,7 +33,7 @@ class event_obj:
         elif self.stage == 'Talking':
             if not text.browse > text.dialength - 1:
                 char.pose(screen, oxygen, 'stand', info_dict['Position'], tick)
-                text.box(screen, oxygen, input, info_dict['Dialogues'][info_dict['Dialogue_List'][0]], 900, 750, 172, current_taco, tick)
+                text.box(screen, oxygen, input, info_dict['Dialogues'][info_dict['Dialogue_List'][0]], 2*900/3, 2*750/3, 2*172/3, current_taco, tick)
             else:
                 text.reset()
                 self.stage = 'sliding_out'

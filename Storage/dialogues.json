@@ -1,0 +1,98 @@
+{
+    "advisor": {
+        "Position": [
+            1500,
+            650
+        ],
+        "Immutable_Dialogue_List": [
+            "tutorial"
+        ],
+        "Dialogue_List": [
+            "tutorial"
+        ],
+        "Dialogues": {
+            "tutorial": {
+                "0": {
+                    "Char": "advisor",
+                    "Message": "Good morning, Lord Hatlor."
+                },
+                "1": {
+                    "Char": "hatlor",
+                    "Message": "Hello, my loyal advisor."
+                },
+                "2": {
+                    "Char": "advisor",
+                    "Message": "We have a lot to go over today."
+                },
+                "3": {
+                    "Char": "advisor",
+                    "Message": "Er, on second thought, this game doesn't seem to have a whole lot of mechanics in it yet."
+                },
+                "4": {
+                    "Char": "advisor",
+                    "Message": "When the game is done, this dialogue will be a lot more helpful."
+                },
+                "5": {
+                    "Char": "hatlor",
+                    "Message": "..."
+                },
+                "6": {
+                    "Char": "hatlor",
+                    "Message": "Ok then, I guess?"
+                },
+                "7": {
+                    "Char": "advisor",
+                    "Message": "Smell ya later, my lord."
+                }
+            }
+        }
+    },
+    "jester": {
+        "Position": [
+            1500,
+            500
+        ],
+        "Immutable_Dialogue_List": [
+            "all in jest"
+        ],
+        "Dialogue_List": [
+            "all in jest"
+        ],
+        "Dialogues": {
+            "all in jest": {
+                "0": {
+                    "Char": "jester",
+                    "Message": "Howdy-do there, Lord Hatlor!"
+                },
+                "1": {
+                    "Char": "hatlor",
+                    "Message": "I'm sorry, are you southern?"
+                },
+                "2": {
+                    "Char": "jester",
+                    "Message": "Pardon?"
+                },
+                "3": {
+                    "Char": "hatlor",
+                    "Message": "Ok, nevermind. Just go on."
+                },
+                "4": {
+                    "Char": "jester",
+                    "Message": "I just noticed that you didn't have a court jester is all!"
+                },
+                "5": {
+                    "Char": "jester",
+                    "Message": "So here I am! Ta-da!"
+                },
+                "6": {
+                    "Char": "hatlor",
+                    "Message": "I have more pressing matters right now, jester."
+                },
+                "7": {
+                    "Char": "jester",
+                    "Message": "Ok, ok. Toodle-oo, my lord!"
+                }
+            }
+        }
+    }
+}

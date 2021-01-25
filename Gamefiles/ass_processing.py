@@ -1,6 +1,6 @@
 class ass:
     def __init__(self, image_list, path = 'Ass/', name = None):
-        self.images = []
+        self.images = {}
         self.retrieve(image_list, path)
         self.starttime = None
         self.name = name
@@ -8,13 +8,17 @@ class ass:
     def retrieve(self, image_list, path):
         import pygame as paygay
         for this in image_list:
-            exec('self.' + this[:-4] + ' = paygay.image.load(path + this)')
-            self.images.append(this[:-4])
+            self.images[this[:-4]] = paygay.image.load(path + this)
     def blit(self, screen, image, xy_tuple):
-        exec('screen.blit(self.' + image + ', xy_tuple)')
-    def pose(self, screen, oxygen, pose, xy_tuple, tick, weight = 1):
+        screen.blit(self.images[image], xy_tuple)
+    def pose(self, screen, oxygen, pose, xy_tuple, tick, weight = 1, crop = None):
         paralax_x, paralax_y = oxygen.paralax_x, oxygen.paralax_y
-        exec('screen.blit(self.' + self.name + '_' + pose + str(tick) + ', (xy_tuple[0] + paralax_x/weight, xy_tuple[1] + paralax_y/weight))')
+        image = self.images[self.name + '_' + pose + str(tick)]
+        pos = (xy_tuple[0] + paralax_x/weight, xy_tuple[1] + paralax_y/weight)
+        if crop == None:
+            screen.blit(image, pos)
+        else:
+            screen.blit(image, pos, crop)
 
 class hatlor_obj(ass):
     def __init__(self, image_list):
@@ -27,7 +31,7 @@ class curtain_obj(ass):
         self.name = "curtain"
     def waiting(self, screen, oxygen, input, pose, xy_tuple, tick, weight = 1.5):
         self.pose(screen, oxygen, pose, xy_tuple, tick, weight)
-        rect = self.curtain_wait3.get_rect(topleft = xy_tuple)
+        rect = self.images['curtain_wait3'].get_rect(topleft = xy_tuple)
         return(rect)
 
 class person_obj(ass):

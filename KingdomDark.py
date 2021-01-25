@@ -12,7 +12,7 @@ for this in ['Structure/', 'Gamefiles/']:
 
 def magic(screen, oxygen, inpt, origin_taco):
     import time as chronic_tacos, pygame as pg
-    pg.display.update((0, 0, 1920, 1080))
+    pg.display.update()
     pg.time.wait(1); screen.fill((60, 20, 70))
     oxygen.rect_list = []
     return(chronic_tacos.time() - origin_taco)
@@ -70,19 +70,15 @@ while True:
             time = "dawn"
     if mode == "game_loop":
         if time == "dawn":
-            #window.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
+            view.pose(screen, oxygen, 'be', (620, 200), ticksync.tick, -2, (500, 500, 670, 490))
             click_box = curtain.waiting(screen, oxygen, inpt, 'wait', (587, 122), ticksync.tick, 1.5)
             if click_box.collidepoint(inpt.mx, inpt.my): mouse.rect_list.append('curtain')
-            #floor.pose(screen, oxygen, 'be', (-100, 20), ticksync.tick)
-            #hatlor.pose(screen, oxygen, 'sit', (10, 300), ticksync.tick)
             throneroom.pose(screen, oxygen, 'be', (0, 20), ticksync.tick)
             if mouse.rect_over == 'curtain' and inpt.t1:
                 time = 'day'
         if time == "day":
-            #window.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
-            opencurtain.pose(screen, oxygen, 'be', (0, 0), ticksync.tick, 1.5)
-            #floor.pose(screen, oxygen, 'be', (-100, 20), ticksync.tick)
-            #hatlor.pose(screen, oxygen, 'sit', (10, 300), ticksync.tick)
+            view.pose(screen, oxygen, 'be', (620, 200), ticksync.tick, -2, (500, 500, 670, 490))
+            opencurtain.pose(screen, oxygen, 'be', (587, 122), ticksync.tick, 1.5)
             throneroom.pose(screen, oxygen, 'be', (0, 20), ticksync.tick)
             character_dict = {advisor: 1, jester: 2}
             if event.go(screen, oxygen, inpt, current_taco, ticksync.tick, jsondata, text, character_dict):

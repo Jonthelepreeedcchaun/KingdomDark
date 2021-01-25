@@ -1,6 +1,6 @@
 class oxygen_obj:
     def __init__(self):
-        pass
+        self.paralax_x, self.paralax_y = 0, 0
     def breathe(self, input):
         self.paralax(input)
     def paralax(self, input, weight = 100):

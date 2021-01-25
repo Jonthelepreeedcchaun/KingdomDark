@@ -18,12 +18,6 @@ class input_object:
         import pygame as pg
         if not self.screenlist == self.screenlist_v: screen = pg.display.set_mode(*self.screenlist)
         self.screenlist_v = self.screenlist
-        if len(self.mouse_over_list) > 1:
-            while len(self.mouse_over_list) > 1:
-                self.mouse_over_list.remove(self.mouse_over_list[0])
-            self.mouse_over = self.mouse_over_list[0]
-        if len(self.mouse_over_list) == 0:
-            self.mouse_over = None
         self.mx, self.my = pg.mouse.get_pos()
         self.m1, self.m3, self.m2 = pg.mouse.get_pressed()
         for this in ['t1', 't2', 't3']:

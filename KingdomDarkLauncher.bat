@@ -1,1 +1,1 @@
-env\Scripts\activate.bat
+env\Scripts\activate.exe
